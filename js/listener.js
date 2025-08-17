@@ -6,7 +6,13 @@ contectMe.onclick = () => {
      sendUpdate("contact-me-clicked");
 };
 
-async function sendUpdate (action) {
+const textarea = document.getElementById("messageInput");
+
+textarea.addEventListener("focus", () => {
+     sendUpdate("textarea-focused");
+});
+
+async function sendUpdate(action) {
      const referrer = document.referrer || "Direct";
      const userAgent = navigator.userAgent;
      const pageUrl = window.location.href;

