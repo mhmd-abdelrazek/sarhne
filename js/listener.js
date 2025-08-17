@@ -6,9 +6,7 @@ contectMe.onclick = () => {
      sendUpdate("contact-me-clicked");
 };
 
-const textarea = document.getElementById("messageInput");
-
-textarea.addEventListener("focus", () => {
+document.getElementById("messageInput").addEventListener("focus", () => {
      sendUpdate("textarea-focused");
 });
 
