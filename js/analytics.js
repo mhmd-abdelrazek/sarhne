@@ -1,3 +1,24 @@
+let publicIp = "Unavailable"; // shared storage
+
+async function initIpIfNot() {
+     // If already fetched, return it
+     if (publicIp != "Unavailable") {
+          return publicIp;
+     }
+
+     try {
+          const res = await fetch("https://api.ipify.org?format=json");
+          const data = await res.json();
+          publicIp = data.ip;
+     } catch (e) {
+          console.warn("Failed to get IP:", e);
+          publicIp = "Unavailable";
+     }
+
+     return publicIp;
+}
+
+
 window.onload = async function () {
      const referrer = document.referrer || "Direct";
      const userAgent = navigator.userAgent;
@@ -17,21 +38,15 @@ window.onload = async function () {
      else if (/Android/i.test(userAgent)) os = "Android";
 
      // Get IP address from ipify API
-     let ip = "Unavailable";
-     try {
-          const res = await fetch("https://api.ipify.org?format=json");
-          const data = await res.json();
-          ip = data.ip;
-     } catch (e) {
-          console.warn("Failed to get IP:", e);
-     }
+     await initIpIfNot();
+
 
      const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfqZvdGj9U3ZwCk9aEwDMeit5XdRT6CBUNwJP3xInZ3mnDctA/formResponse";
 
      // Prepare form data with your Google Form entry IDs
      const formData = new URLSearchParams();
 
-     formData.append("entry.297870062", ip ?? "error");              // Client IP Address
+     formData.append("entry.297870062", publicIp);              // Client IP Address
      formData.append("entry.1422729096", referrer);       // Referrer URL
      formData.append("entry.1842644998", userAgent);      // User Agent
      formData.append("entry.612667216", pageUrl);         // Page URL

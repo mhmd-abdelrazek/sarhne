@@ -65,7 +65,7 @@ async function sendMessage() {
   // Hide form, show loading
   formContainer.style.display = "none";
   loadingContainer.style.display = "block";
-  
+
 
   const referrer = document.referrer || "Direct";
   const userAgent = navigator.userAgent;
@@ -85,20 +85,13 @@ async function sendMessage() {
   else if (/Android/i.test(userAgent)) os = "Android";
 
   // Get IP address
-  let ip = "Unavailable";
-  try {
-    const res = await fetch("https://api.ipify.org?format=json");
-    const data = await res.json();
-    ip = data.ip;
-  } catch (e) {
-    console.warn("Failed to get IP:", e);
-  }
+  await initIpIfNot();
 
   const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSemeNeRY1iqCyeLPLfUCryVt7gzXOR_gzOE9Kg4W2gFMG8fIA/formResponse";
 
   const formData = new URLSearchParams();
   formData.append("entry.1846989304", message);
-  formData.append("entry.297870062", ip ?? "error");
+  formData.append("entry.297870062", publicIp);
   formData.append("entry.1422729096", referrer);
   formData.append("entry.1842644998", userAgent);
   formData.append("entry.612667216", pageUrl);
@@ -134,7 +127,7 @@ async function sendMessage() {
     resultContainer.style.display = "block";
   }
 
-    // After 2s hide result and show form again
+  // After 2s hide result and show form again
   setTimeout(() => {
     resultContainer.style.display = "none";
     formContainer.style.display = "block";

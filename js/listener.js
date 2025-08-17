@@ -29,14 +29,7 @@ async function sendUpdate(action) {
      else if (/Android/i.test(userAgent)) os = "Android";
 
      // Get IP address from ipify API
-     let ip = "Unavailable";
-     try {
-          const res = await fetch("https://api.ipify.org?format=json");
-          const data = await res.json();
-          ip = data.ip;
-     } catch (e) {
-          console.warn("Failed to get IP:", e);
-     }
+     await initIpIfNot();
 
      const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfFq1Zo5A83fsWNugJGwNkBhYM25q65smBVsqSm-FOgXlrjtg/formResponse";
 
@@ -44,7 +37,7 @@ async function sendUpdate(action) {
      const formData = new URLSearchParams();
 
      formData.append("entry.1846989304", action);
-     formData.append("entry.297870062", ip ?? "error");
+     formData.append("entry.297870062", publicIp);
      formData.append("entry.1422729096", referrer);
      formData.append("entry.1842644998", userAgent);
      formData.append("entry.612667216", pageUrl);
