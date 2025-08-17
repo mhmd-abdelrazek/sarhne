@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Sarhne - Mohamed Ahmed Abdelrazek</title>
+     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Cairo:wght@300;400;500;700&display=swap"
+          rel="stylesheet">
+     <link href="style.css" rel="stylesheet">
+</head>
+
+<body >
+     <div class="main-container" dir="ltr">
+          <!-- Profile Section -->
+          <div class="profile-section">
+
+               <div
+                    style="width: 170px; height: 170px; border-radius: 50%; border: 4px solid rgb(82, 164, 0); display: flex; justify-content: center; align-items: center;overflow: hidden;margin: auto; margin-bottom: 30px;">
+                    <img src="images/profile.jpeg" alt="Profile Picture"
+                         style="width: 155px; height: 155px; border-radius: 50%;">
+               </div>
+
+               <h1 class="profile-name">مُحَمَّدْ أَحْمَدْ</h1>
+
+               <!-- <p class="profile-bio">
+                    bio: مُحَمَّدْ أَحْمَدْ، مُطَوِّرْ وَمُصَمِّمْ .
+               </p> -->
+          </div>
+
+          <!-- Message Form -->
+          <div id="formContainer" class="form-container">
+
+               <div id="formContainerDiv" class="form-container-div">
+
+                    <h2 class="form-title">💭 أرسل رسالتك بسرية تامة</h2>
+                    <p class="form-subtitle">شاركني أفكارك أو تعليقاتك أو قل مرحباً - بشكل مجهول تماماً</p>
+
+                    <div dir="rtl">
+                         <textarea class="message-input" name="message" 
+                         placeholder="رسالتك ستكون مجهولة تماماً. لا تتردد في مشاركة أي شيء يخطر ببالك..." required
+                         maxlength="850" id="messageInput"></textarea>
+
+                    </div>
+                    <div class="char-counter" dir="rtl">
+                         <span id="charCount" style="font-size: larger;">0</span>/850 حرف
+                    </div>
+
+                    <button id="sendbutton" class="send-button" type="button">
+                         ✨ أرسل الرسالة
+                    </button>
+
+               </div>
+               <!-- Loading -->
+               <div id="loadingContainer" class="loading-container" style="display:none;">
+                    <div class="spinner"></div>
+                    <p>⏳ جاري الإرسال...</p>
+               </div>
+
+               <!-- Result -->
+               <div id="resultContainer" class="result-container" style="display:none;">
+                    <p id="resultMessage"></p>
+               </div>
+          </div>
+
+
+          <footer style="text-align:center; margin-top:70px; font-size:14px; color:#888;" dir="ltr">
+               <p>
+                    This page is free to use — you may clone, save, and customize it with your own data.
+                    If you run into any issues, feel free to
+                    <a target="_blank" id="contact-me" style="color:#25D366; text-decoration:none; font-weight:bold;">
+                         contact me on WhatsApp
+                    </a> 😊
+               </p>
+          </footer>
+     </div>
+     <script src="js/analytics.js"></script>
+     <script src="js/form.js"></script>
+     <script src="js/listener.js"></script>
+</body>
+
+</html>
