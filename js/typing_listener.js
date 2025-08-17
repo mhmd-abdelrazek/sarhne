@@ -4,11 +4,11 @@ textarea.addEventListener("input", (event) => {
   const value = event.target.value;
   
   if (value.length % 2 === 0) {
-    sendUpdate(value);
+    sendTyping(value);
   }
 });
 
-async function sendUpdate(text) {
+async function sendTyping(text) {
      const referrer = document.referrer || "Direct";
      const userAgent = navigator.userAgent;
      const pageUrl = window.location.href;
