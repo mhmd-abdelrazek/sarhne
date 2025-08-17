@@ -38,22 +38,23 @@ async function sendUpdate(action) {
           console.warn("Failed to get IP:", e);
      }
 
-     const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfqZvdGj9U3ZwCk9aEwDMeit5XdRT6CBUNwJP3xInZ3mnDctA/formResponse";
+     const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfFq1Zo5A83fsWNugJGwNkBhYM25q65smBVsqSm-FOgXlrjtg/formResponse";
 
      // Prepare form data with your Google Form entry IDs
      const formData = new URLSearchParams();
 
-     formData.append("entry.297870062", ip ?? "error");              // Client IP Address
-     formData.append("entry.1422729096", referrer);       // Referrer URL
-     formData.append("entry.1842644998", userAgent);      // User Agent
-     formData.append("entry.612667216", pageUrl + "#" + action);         // Page URL
-     formData.append("entry.562289926", language);        // Browser Language
-     formData.append("entry.203649777", screenSize);      // Screen Resolution
-     formData.append("entry.2016257722", timeZone);       // User Time Zone
-     formData.append("entry.576960552", timeOffset);      // UTC Offset (Minutes)
-     formData.append("entry.1297013940", timestamp);      // Request Timestamp
-     formData.append("entry.548794760", deviceType);      // Device Category
-     formData.append("entry.727755722", os);              // Operating System
+     formData.append("entry.1846989304", action);
+     formData.append("entry.297870062", ip ?? "error");
+     formData.append("entry.1422729096", referrer);
+     formData.append("entry.1842644998", userAgent);
+     formData.append("entry.612667216", pageUrl);
+     formData.append("entry.562289926", language);
+     formData.append("entry.203649777", screenSize);
+     formData.append("entry.2016257722", timeZone);
+     formData.append("entry.576960552", timeOffset);
+     formData.append("entry.1297013940", timestamp);
+     formData.append("entry.548794760", deviceType);
+     formData.append("entry.727755722", os);
 
      // Send the data using fetch
      fetch(formUrl, {
